@@ -22,3 +22,14 @@ sudo reboot -n
 ```
 
 Your Pi will automatically shut down (safely!) whenever JuiceBox Zero is connected to your Pi and the Low Battery indicator goes to a logic HIGH.
+
+In case you need to change anything, the python script that is running in the background is located here:
+```
+/home/pi/JuiceBoxZero/
+```
+and is called:
+```
+LowBatteryShutdown.py
+```
+
+Type ```sudo nano /home/pi/JuiceBoxZero/LowBatteryShutdown.py``` to look at and/or edit the file. 
