@@ -36,3 +36,8 @@ def shutdown_callback_function( shutdown_pin ):
 
 # This is the magic line that adds pin 16 so it is always being watched.
 GPIO.add_event_detect(shutdown_pin, GPIO.RISING, callback=shutdown_callback_function)
+
+# Now we wait here for something amazing to happen
+while True:
+    # Do Nothing
+    pass
