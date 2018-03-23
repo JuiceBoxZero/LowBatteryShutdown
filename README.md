@@ -30,7 +30,7 @@ sudo crontab -e
 (select a text editor, usually "Nano" is the default option)
 At the bottom of the file add the line:
 ```
-@reboot sudo python /home/pi/JuiceBoxZero/LowBatteryShutdown.py
+@reboot sudo python /home/pi/LowBatteryShutdown/LowBatteryShutdown.py
 ```
 Now save and exit.
 Then, reboot your Pi with:
@@ -54,4 +54,4 @@ and is called:
 LowBatteryShutdown.py
 ```
 
-Type ```sudo nano /home/pi/JuiceBoxZero/LowBatteryShutdown.py``` to look at and/or edit the file. 
+Type ```sudo nano /home/pi/LowBatteryShutdown/LowBatteryShutdown.py``` to look at and/or edit the file. 
