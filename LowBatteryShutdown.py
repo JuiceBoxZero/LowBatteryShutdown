@@ -7,6 +7,7 @@
 # There is also no warranty provided of any kind with this code.
 
 import os
+import time
 import RPi.GPIO as GPIO
 
 # This is going to let us use the BCM pin numbers.  The number on JuiceBox
@@ -31,7 +32,7 @@ def shutdown_callback_function( shutdown_pin ):
     # HIGH and that the callback function has been entered. This is mostly
     # useful for debugging.
     #print("the low battery pin is HIGH now, shutting down.")
-    
+
     os.system("sudo shutdown -h now")
 
 # This is the magic line that adds pin 16 so it is always being watched.
@@ -39,5 +40,6 @@ GPIO.add_event_detect(shutdown_pin, GPIO.RISING, callback=shutdown_callback_func
 
 # Now we wait here for something amazing to happen
 while True:
-    # Do Nothing
+    # Do Nothing - slowly
+    time.sleep(1)
     pass
