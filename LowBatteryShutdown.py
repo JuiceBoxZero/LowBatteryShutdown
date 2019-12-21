@@ -24,22 +24,10 @@ GPIO.setmode(GPIO.BCM)
 # GPIO 25.
 # See http://www.blog.juiceboxzero.com/ for more details.
 shutdown_pin = 16  # defines pin 16 as the pin we're watching
-GPIO.setup(shutdown_pin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+GPIO.setup(shutdown_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-def shutdown_callback_function( shutdown_pin ):
+# We now simply wait for the shutdown pin to go "high" (blocking call)
+GPIO.wait_for_edge(shutdown_pin, GPIO.RISING)
 
-    # uncomment the following line to have the Pi tell you that the pin is
-    # HIGH and that the callback function has been entered. This is mostly
-    # useful for debugging.
-    #print("the low battery pin is HIGH now, shutting down.")
-
-    os.system("sudo shutdown -h now")
-
-# This is the magic line that adds pin 16 so it is always being watched.
-GPIO.add_event_detect(shutdown_pin, GPIO.RISING, callback=shutdown_callback_function)
-
-# Now we wait here for something amazing to happen
-while True:
-    # Do Nothing - slowly
-    time.sleep(1)
-    pass
+# We know the battery is low when we get here, so we can now shutdown
+os.system("sudo shutdown -h now")
